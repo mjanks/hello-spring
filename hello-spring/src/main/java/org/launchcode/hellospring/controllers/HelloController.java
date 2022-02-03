@@ -33,4 +33,10 @@ public class HelloController {
     public String helloWithQueryParam(@RequestParam String coder) {
         return "Hello, " + coder + "!";
     }
+
+    @GetMapping("hello/{name}")
+    @ResponseBody
+    public String helloAgain(@PathVariable String name) {
+        return "Hello, " + name + "!";
+    }
 }
