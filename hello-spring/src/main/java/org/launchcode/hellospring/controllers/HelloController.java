@@ -20,23 +20,31 @@ public class HelloController {
         return "Goodbye, Spring!";
     }
 
-    // Responds to get and post requests at /hellogoodbye
-    @RequestMapping(value="hellogoodbye", method = {RequestMethod.GET, RequestMethod.POST})
+    // Handles requests of the form /hello?name=LaunchCode
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value = "hello")
     @ResponseBody
-    public String hellogoodbye() {
-        return "Hello Goodbye, Spring!";
-    }
-
-    // Responds to get requests at /hello?coder=LaunchCoder
-    @GetMapping("hello")
-    @ResponseBody
-    public String helloWithQueryParam(@RequestParam String coder) {
-        return "Hello, " + coder + "!";
-    }
-
-    @GetMapping("hello/{name}")
-    @ResponseBody
-    public String helloAgain(@PathVariable String name) {
+    public String helloWithQueryParam(@RequestParam String name) {
         return "Hello, " + name + "!";
     }
+
+    // Handles requests of the form /hello/LaunchCode
+    @GetMapping("hello/{name}")
+    @ResponseBody
+    public String helloWithPathParam(@PathVariable String name) {
+        return "Hello, " + name + "!";
+    }
+
+    @GetMapping("form")
+    @ResponseBody
+    public String helloForm() {
+        return "<html>" +
+                "<body>" +
+                "<form action='hello' method='POST'>" +
+                "<input type='text' name='name'>" +
+                "<input type='submit' value='Greet me!'>" +
+                "</form>" +
+                "</body>" +
+                "</html>";
+    }
+
 }
