@@ -8,32 +8,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("hello")
 public class HelloController {
 
-    //    // Handle request at path /hello
-//    @GetMapping("hello")
-//    @ResponseBody
-//    public String hello() {
-//        return "Hello, Spring!";
-//    }
-
-    // lives at /hello/goodbye
-    @GetMapping("goodbye")
-    public String goodbye() {
-        return "Goodbye, Spring!";
-    }
-
-    // Handles requests of the form /hello?name=LaunchCode
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST})
-    public String helloWithQueryParam(@RequestParam String name) {
-        return "Hello, " + name + "!";
+    public String helloWithQueryParam(@RequestParam String name, String language) {
+        return createMessage(name, language);
     }
 
-    // Handles requests of the form /hello/LaunchCode
-    @GetMapping("{name}")
-    public String helloWithPathParam(@PathVariable String name) {
-        return "Hello, " + name + "!";
-    }
-
-    // /hello/form
     @GetMapping("form")
     public String helloForm() {
         return "<html>" +
@@ -52,6 +31,23 @@ public class HelloController {
                         "</form>" +
                     "</body>" +
                 "</html>";
+    }
+
+    public static String createMessage(String name, String language) {
+        switch (language) {
+            case "english":
+                return "Hello " + name;
+            case "spanish":
+                return "Hola " + name;
+            case "french":
+                return "Bonjour " + name;
+            case "german":
+                return "Hallo " + name;
+            case "japanese":
+                return "Konnichiwa " + name;
+            default:
+                throw new IllegalStateException("Unexpected value: " + language);
+        }
     }
 
 }
