@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("hello")
 public class HelloController {
 
-    // Responds to get requests at /hello
+    //    // Handle request at path /hello
 //    @GetMapping("hello")
 //    @ResponseBody
 //    public String hello() {
 //        return "Hello, Spring!";
 //    }
 
-    // Responds to post requests at /hello/goodbye
-    @PostMapping("goodbye")
+    // lives at /hello/goodbye
+    @GetMapping("goodbye")
     public String goodbye() {
         return "Goodbye, Spring!";
     }
@@ -33,14 +33,14 @@ public class HelloController {
         return "Hello, " + name + "!";
     }
 
-    // lives at /hello/form
+    // /hello/form
     @GetMapping("form")
     public String helloForm() {
         return "<html>" +
                 "<body>" +
-                "<form action='hello' method='POST'>" +
-                "<input type='text' name='name'>" +
-                "<input type='submit' value='Greet me!'>" +
+                "<form action = '/hello' method = 'post'>" + // submit a request to /hello
+                "<input type = 'text' name = 'name' >" +
+                "<input type = 'submit' value = 'Greet Me!' >" +
                 "</form>" +
                 "</body>" +
                 "</html>";
