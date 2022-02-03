@@ -36,15 +36,40 @@ public class HelloController {
     public static String createMessage(String name, String language) {
         switch (language) {
             case "english":
-                return "Hello " + name;
+                return "<html>" +
+                        "<body>" +
+                        "<h1 style='color: blue;'> Hello " + name +
+                        "</h1>" +
+                        "</body>" +
+                        "</html>";
             case "spanish":
-                return "Hola " + name;
+                return "<html>" +
+                        "<body>" +
+                        "<h1 style='color: red;'> Hola " + name +
+                        "</h1>" +
+                        "</body>" +
+                        "</html>";
             case "french":
-                return "Bonjour " + name;
+                return "<html>" +
+                        "<body>" +
+                        "<h1 style='color: green;'> Bonjour " + name +
+                        "</h1>" +
+                        "</body>" +
+                        "</html>";
             case "german":
-                return "Hallo " + name;
+                return "<html>" +
+                        "<body>" +
+                        "<h1 style='color: orange;'> Hallo " + name +
+                        "</h1>" +
+                        "</body>" +
+                        "</html>";
             case "japanese":
-                return "Konnichiwa " + name;
+                return "<html>" +
+                        "<body>" +
+                        "<h1 style='color: purple;'> Konnichiwa " + name +
+                        "</h1>" +
+                        "</body>" +
+                        "</html>";
             default:
                 throw new IllegalStateException("Unexpected value: " + language);
         }
