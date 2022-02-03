@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 public class HelloController {
 
     // Responds to get requests at /hello
-    @GetMapping("hello")
-    @ResponseBody
-    public String hello() {
-        return "Hello, Spring!";
-    }
+//    @GetMapping("hello")
+//    @ResponseBody
+//    public String hello() {
+//        return "Hello, Spring!";
+//    }
 
     // Responds to post requests at /goodbye
     @PostMapping("goodbye")
@@ -25,5 +25,12 @@ public class HelloController {
     @ResponseBody
     public String hellogoodbye() {
         return "Hello Goodbye, Spring!";
+    }
+
+    // Responds to get requests at /hello?coder=LaunchCoder
+    @GetMapping("hello")
+    @ResponseBody
+    public String helloWithQueryParam(@RequestParam String coder) {
+        return "Hello, " + coder + "!";
     }
 }
